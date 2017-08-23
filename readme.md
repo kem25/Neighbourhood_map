@@ -14,7 +14,7 @@ This project is a single page web application which helps you to view a list of 
   The web page displays six restauarants denoted by markers on loading. The item list in the left corner gives you the list of restauarants shown in the map. You can view the info of each restaurant by clicking on the respective marker. You can also filter the list of restauarants to only show the restauarnt of your choice.
 
 ## How to View This App
-  Download the source code and open the index.html file in your browser.
+  Download the source code from https://github.com/kem25/Neighbourhood_map and open the index.html file in your browser.
 
 ## Resources
 * [Foursquare for Developers](https://developer.foursquare.com/)
