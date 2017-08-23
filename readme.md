@@ -3,12 +3,12 @@ This project is a single page web application which helps you to view a list of 
 
 ## API's used:
  
- Google Maps
- Foursquare
+ *Google Maps
+ *Foursquare
 
 ## Frameworks used:
- jQuery
- KnockoutJ
+ *jQuery
+ *KnockoutJ
 
 ## Functionality
   The web page displays six restauarants denoted by markers on loading. The item list in the left corner gives you the list of restauarants shown in the map. You can view the info of each restaurant by clicking on the respective marker. You can also filter the list of restauarants to only show the restauarnt of your choice.
