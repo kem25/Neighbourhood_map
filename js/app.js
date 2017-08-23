@@ -143,7 +143,7 @@ google.maps.event.addDomListener(window, "resize", function() {
     this.fs_id = data.fs_id;
     this.shortUrl = "";
     this.photoUrl = "";
-  }
+  };
 
 // Binding markers with the list-items
  function ViewModel() {
@@ -191,10 +191,10 @@ google.maps.event.addDomListener(window, "resize", function() {
           success: function(data) {
             var response = data.response ? data.response : "";
             var venue = response.venue ? data.venue : "";
-                item.name = response.venue["name"];
-                item.shortUrl = response.venue["shortUrl"];
-                item.photoUrl = response.venue.bestPhoto["prefix"] + "height200" +
-                response.venue.bestPhoto["suffix"];
+                item.name = response.venue.name;
+                item.shortUrl = response.venue.shortUrl;
+                item.photoUrl = response.venue.bestPhoto.prefix + "height200" +
+                response.venue.bestPhoto.suffix;
           }
         });
       });
@@ -204,7 +204,7 @@ google.maps.event.addDomListener(window, "resize", function() {
     this.itemClick = function (item) {
       var markerId = item.markerId;
       google.maps.event.trigger(item.marker, "click");
-    }
+    };
 
     // Filter the list
     self.filter = ko.observable("");
@@ -226,7 +226,7 @@ google.maps.event.addDomListener(window, "resize", function() {
         });
       }
     }, this);
-  };
+  }
 
  // Apply bindings to the view model
 ko.applyBindings(new ViewModel());
@@ -236,4 +236,4 @@ ko.applyBindings(new ViewModel());
     document.getElementById("map-error").style.display = "block";
 
     document.getElementById("map-error").innerHTML = "Google map could not be loaded..please try again";
-}
+};
