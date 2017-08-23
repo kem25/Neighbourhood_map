@@ -13,9 +13,9 @@ var initialSpaces = [
           {"title": "Opa Life Greek Cafe", "location": {"lat":33.3777804 , "lng": -111.9360861 }, "fs_id": "53c84bcd498e35e3e45faab5"}
         ];
 // Url elements for FourSquare API
-var BaseUrl = "https://api.foursquare.com/v2/venues/",
-    fsClient_id = "client_id=YMGR14U3YEE0DMAWI2BCVRMFG0UEJXITA4C5X22GMDFEDK55",
-    fsClient_secret = "&client_secret=DPTYGA0H2TCRKQQJ1UJKFHUSHNGZRPWIZVFRXADJCVYOKZP3",
+var BaseUrl = "https://api.foursquare.com/v2/venues/";
+    fsClient_id = "client_id=YMGR14U3YEE0DMAWI2BCVRMFG0UEJXITA4C5X22GMDFEDK55";
+    fsClient_secret = "&client_secret=DPTYGA0H2TCRKQQJ1UJKFHUSHNGZRPWIZVFRXADJCVYOKZP3";
     fsVersion = "&v=20170101";
 
 // map initialisation function which gets called when the page is loaded
@@ -24,7 +24,7 @@ function mapInit() {
 
   // Custom marker image
   var image = {
-    "url": "img/pizza.png",
+    "url": "img/pizza.png"
   };
 
   // setting map options
@@ -36,47 +36,47 @@ function mapInit() {
     zoom: 12,
     styles: [
           {
-            featureType: 'water',
+            featureType: "water",
             stylers: [
-              { color: '#19a0d8' }
+              { color: "#19a0d8" }
             ]
           },{
-            featureType: 'road.highway',
-            elementType: 'geometry.stroke',
+            featureType: "road.highway",
+            elementType: "geometry.stroke",
             stylers: [
-              { color: '#efe9e4' },
+              { color: "#efe9e4" },
               { lightness: -40 }
             ]
           },{
-            featureType: 'transit.station',
+            featureType: "transit.station",
             stylers: [
               { weight: 9 },
-              { hue: '#e85113' }
+              { hue: "#e85113" }
             ]
           },{
-            featureType: 'road.highway',
-            elementType: 'labels.icon',
+            featureType: "road.highway",
+            elementType: "labels.icon",
             stylers: [
-              { visibility: 'off' }
+              { visibility: "off" }
             ]
           },{
-            featureType: 'water',
-            elementType: 'labels.text.fill',
+            featureType: "water",
+            elementType: "labels.text.fill",
             stylers: [
               { lightness: -100 }
             ]
           },{
-            featureType: 'poi',
-            elementType: 'geometry',
+            featureType: "poi",
+            elementType: "geometry",
             stylers: [
-              { visibility: 'on' },
-              { color: '#f0e4d3' }
+              { visibility: "on" },
+              { color: "#f0e4d3" }
             ]
           },{
-            featureType: 'road.highway',
-            elementType: 'geometry.fill',
+            featureType: "road.highway",
+            elementType: "geometry.fill",
             stylers: [
-              { color: '#efe9e4' },
+              { color: "#efe9e4" },
               { lightness: -25 }
             ]
           }
@@ -98,7 +98,7 @@ function mapInit() {
 google.maps.event.addDomListener(window, "resize", function() {
    var center = map.getCenter();
    google.maps.event.trigger(map, "resize");
-   map.setCenter(center); 
+      map.setCenter(center);
 });
 
 
@@ -117,7 +117,7 @@ google.maps.event.addDomListener(window, "resize", function() {
         marker.setAnimation(null);
       }, 700);
     }
-  };
+  }
 
  // Fetch infowindow content with foursquare data
   function getContent(item) {
@@ -125,7 +125,7 @@ google.maps.event.addDomListener(window, "resize", function() {
       "</h3><br><div style='width:200px;min-height:100px'><img src=" + '"' +
       item.photoUrl + '"></div><div><a href="' + item.shortUrl +
       '" target="_blank">Click here for Foursquare-info</a>';
-    var errorString = "Foursquare content unavailable."
+    var errorString = "Foursquare content unavailable.";
     if (item.name.length > 0) {
       return contentString;
       } else {
@@ -233,7 +233,7 @@ ko.applyBindings(new ViewModel());
 }
  var mapError = function() {
 
-    document.getElementById('map-error').style.display = 'block';
+    document.getElementById("map-error").style.display = "block";
 
-    document.getElementById('map-error').innerHTML = 'Google map could not be loaded..please try again';
+    document.getElementById("map-error").innerHTML = "Google map could not be loaded..please try again";
 }
