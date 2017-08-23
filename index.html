@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Restaurants in Tempe</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsivestyle.css">
+</head>
+
+<body>
+  <header>
+    <h1>Restaurants in Tempe</h1>
+  </header>
+
+  <div id ="container" class="container">
+    <div id="menu">
+      <div>
+      </div>
+      <div class="place-list">
+        <div  class="filter">
+          <div>Filter list:
+            <form  class="filter-form">
+              <input data-bind="textInput: filter" autocomplete="off"  class="filter-input" placeholder="Type Place name" >
+              <button type="submit">Clear</button>
+            </form>
+          </div>
+        </div>
+        <div  class="list">
+          <h2>List of Places</h2>
+          <ul data-bind="foreach: filteredSpaceList, visible: filteredSpaceList().length > 0"  class="list-spaces">
+            <li data-bind= "text: title, click: $root.itemClick"></li>
+          </ul>
+          <img src="img/foursquare_150.png" alt="foursquare-logo">
+        </div>
+      </div>
+    </div>
+    <div id="map" class="map"></div>
+    <div id="map-error" class="map-error"></div>
+  </div>
+  <script src="js/lib/knockout-3.4.0.js"></script>
+  <script src="js/lib/jquery.min.js"></script>
+  <script src="js/app.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKV7Nh4wLfoA6UmaKtD4ghppnaYioE2VE&v3&callback=mapInit" onerror="mapError()"></script>
+
+</body>
+</html>
