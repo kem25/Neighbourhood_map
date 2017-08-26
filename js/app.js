@@ -194,7 +194,7 @@ google.maps.event.addDomListener(window, "resize", function () {
                     item.photoUrl = "img/error.jpg";
                     item.shortUrl = "file not found";
             // $("#url").hide();
-                })
+                });
 
             });
         });
@@ -214,7 +214,7 @@ google.maps.event.addDomListener(window, "resize", function () {
                 return ko.utils.arrayFilter(self.spaceList(), function (item) {
                     item.marker.setVisible(true);
                     return true;
-                })
+                });
             } else {
                 return ko.utils.arrayFilter(this.spaceList(), function (item) {
                     if (item.name.toLowerCase().indexOf(userinput) >= 0) {
