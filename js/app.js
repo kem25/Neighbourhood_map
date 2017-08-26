@@ -13,15 +13,15 @@ var fsVersion = "&v=20170101";
 // map initialisation function which gets called when the page is loaded
 function mapInit() {
     "use strict";
-      // to hide error-section
+    // to hide error-section
     var $mape = $(".map-error");
     $mape.hide();
-      // Custom marker image
+    // Custom marker image
     var image = {
         "url": "img/pizza.png"
     };
 
-  // setting map options
+    // setting map options
     var mapOptions = {
         "center": {
             "lat": 33.4255104,
@@ -32,46 +32,46 @@ function mapInit() {
             {
                 featureType: "water",
                 stylers: [
-                    {color: "#19a0d8"}
+                    { color: "#19a0d8" }
                 ]
             }, {
                 featureType: "road.highway",
                 elementType: "geometry.stroke",
                 stylers: [
-                    {color: "#efe9e4"},
-                    {lightness: -40}
+                    { color: "#efe9e4" },
+                    { lightness: -40 }
                 ]
             }, {
                 featureType: "transit.station",
                 stylers: [
-                    {weight: 9},
-                    {hue: "#e85113"}
+                    { weight: 9 },
+                    { hue: "#e85113" }
                 ]
             }, {
                 featureType: "road.highway",
                 elementType: "labels.icon",
                 stylers: [
-                    {visibility: "off"}
+                    { visibility: "off" }
                 ]
             }, {
                 featureType: "water",
                 elementType: "labels.text.fill",
                 stylers: [
-                    {lightness: -100}
+                    { lightness: -100 }
                 ]
             }, {
                 featureType: "poi",
                 elementType: "geometry",
                 stylers: [
-                    {visibility: "on"},
-                    {color: "#f0e4d3"}
+                    { visibility: "on" },
+                    { color: "#f0e4d3" }
                 ]
             }, {
                 featureType: "road.highway",
                 elementType: "geometry.fill",
                 stylers: [
-                    {color: "#efe9e4"},
-                    {lightness: -25}
+                    { color: "#efe9e4" },
+                    { lightness: -25 }
                 ]
             }
         ],
@@ -88,20 +88,20 @@ function mapInit() {
     });
     bounds = new google.maps.LatLngBounds();
 
-  // Resize stuff...
-google.maps.event.addDomListener(window, "resize", function () {
+    // Resize stuff...
+    google.maps.event.addDomListener(window, "resize", function () {
         var center = map.getCenter();
         google.maps.event.trigger(map, "resize");
         map.setCenter(center);
     });
 
 
-  // Close info-window when clicked else-where on the map
+    // Close info-window when clicked else-where on the map
     map.addListener("click", function () {
         infowindow.close(infowindow);
     });
 
-  // Bounce effect on marker
+    // Bounce effect on marker
     function toggleBounce(marker) {
         if (marker.getAnimation() !== null) {
             marker.setAnimation(null);
@@ -113,12 +113,12 @@ google.maps.event.addDomListener(window, "resize", function () {
         }
     }
 
- // Fetch infowindow content with foursquare data
+    // Fetch infowindow content with foursquare data
     function getContent(item) {
         var contentString = "<h3>" + item.name +
-                "</h3><br><div style='width:200px;min-height:100px'><img src=" + '"' +
-                item.photoUrl + '"></div><div id="url"><a  href="' + item.shortUrl +
-                '" target="_blank">Click here for Foursquare-info</a></div>';
+            "</h3><br><div style='width:200px;min-height:100px'><img src=" + '"' +
+            item.photoUrl + '"></div><div id="url"><a  href="' + item.shortUrl +
+            '" target="_blank">Click here for Foursquare-info</a></div>';
         var errorString = "Foursquare has not been loaded";
         if (item.name) {
             return contentString;
@@ -127,7 +127,7 @@ google.maps.event.addDomListener(window, "resize", function () {
         }
     }
 
-  //Object for Places
+    //Object for Places
     var Place = function (data, map, id) {
         var self = this;
         this.title = ko.observable(data.title);
@@ -139,17 +139,17 @@ google.maps.event.addDomListener(window, "resize", function () {
         this.photoUrl = "";
     };
 
-// Binding markers with the list-items
+    // Binding markers with the list-items
     function ViewModel() {
         var self = this;
 
-    // Adding all places to form a list
+        // Adding all places to form a list
         this.spaceList = ko.observableArray();
         initialSpaces.forEach(function (item) {
             self.spaceList.push(new Place(item));
         });
 
-    // Create a marker for each item
+        // Create a marker for each item
         this.spaceList().forEach(function (item) {
             var marker = new google.maps.Marker({
                 map: map,
@@ -158,9 +158,9 @@ google.maps.event.addDomListener(window, "resize", function () {
                 animation: google.maps.Animation.DROP
             });
             item.marker = marker;
-      // Extends the boundaries of the map for each marker
+            // Extends the boundaries of the map for each marker
             bounds.extend(marker.position);
-      // eventlistener to display info-window and create bounce effect
+            // eventlistener to display info-window and create bounce effect
             marker.addListener("click", function (e) {
                 infowindow.setContent(getContent(item));
                 infowindow.open(map, marker);
@@ -168,15 +168,15 @@ google.maps.event.addDomListener(window, "resize", function () {
             });
         });
 
-    // Foursquare API request
+        // Foursquare API request
         self.getFoursquareData = ko.computed(function () {
             self.spaceList().forEach(function (item) {
 
-        // Url building for each list item
+                // Url building for each list item
                 var venueId = item.fs_id + "/?";
                 var foursquareUrl = BaseUrl + venueId + fsClient_id + fsClient_secret + fsVersion;
 
-        // AJAX call to Foursquare
+                // AJAX call to Foursquare
                 $.ajax({
                     type: "GET",
                     url: foursquareUrl,
@@ -188,12 +188,12 @@ google.maps.event.addDomListener(window, "resize", function () {
                     item.name = response.venue.name;
                     item.shortUrl = response.venue.shortUrl;
                     item.photoUrl = response.venue.bestPhoto.prefix + "height200" +
-                            response.venue.bestPhoto.suffix;
-                }).error(function (e) {
+                         response.venue.bestPhoto.suffix;
+                }).fail(function () {
                     item.name = "this Item has not been loaded";
                     item.photoUrl = "img/error.jpg";
                     item.shortUrl = "file not found";
-            // $("#url").hide();
+                // $("#url").hide();
                 });
 
             });
@@ -206,9 +206,9 @@ google.maps.event.addDomListener(window, "resize", function () {
             google.maps.event.trigger(item.marker, "click");
         };
 
-    // Filter the list
+        // Filter the list
         self.filter = ko.observable("");
-        this.filteredSpaceList = ko.dependentObservable(function () {
+        this.filteredSpaceList = ko.computed(function () {
             var userinput = this.filter().toLowerCase();
             if (!userinput) {
                 return ko.utils.arrayFilter(self.spaceList(), function (item) {
@@ -229,12 +229,11 @@ google.maps.event.addDomListener(window, "resize", function () {
         }, this);
     }
 
- // Apply bindings to the view model
+     // Apply bindings to the view model
      ko.applyBindings(new ViewModel());
 }
 var mapError = function () {
     "use strict";
-    var errorMsg = "Google map could not be loaded..please try again";
+    $(".map").hide();
     $(".map-error").show();
-    return errorMsg;
 };

@@ -122,8 +122,10 @@ li:hover {
 }
 
 .map-error {
-  max-width: 100%;
-  position: fixed;
+  display:inline-block;
+  width:80%;
+  height:100px;
+  position: absolute;
   bottom: 0;
   right: 0;
   background: #f7f7f7;
