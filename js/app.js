@@ -13,7 +13,7 @@ var fsVersion = "&v=20170101";
 // map initialisation function which gets called when the page is loaded
 function mapInit() {
     "use strict";
-  
+  function view(){
   
     // Custom marker image
     var image = {
@@ -137,6 +137,7 @@ function mapInit() {
         this.shortUrl = "";
         this.photoUrl = "";
     };
+};
 
     // Binding markers with the list-items
     function ViewModel() {
@@ -144,8 +145,8 @@ function mapInit() {
 
         // Adding all places to form a list
         this.spaceList = ko.observableArray();
-        initialSpaces.forEach(function (item) {
-            self.spaceList.push(new Place(item));
+        model.initialSpaces.forEach(function (item) {
+            self.spaceList.push(new view.Place(item));
         });
 
         // Create a marker for each item
