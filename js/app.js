@@ -13,9 +13,8 @@ var fsVersion = "&v=20170101";
 // map initialisation function which gets called when the page is loaded
 function mapInit() {
     "use strict";
-    // to hide error-section
-    var $mape = $(".map-error");
-    $mape.hide();
+  
+  
     // Custom marker image
     var image = {
         "url": "img/pizza.png"
@@ -232,8 +231,6 @@ function mapInit() {
     // Apply bindings to the view model
     ko.applyBindings(new ViewModel());
 }
-var mapError = function () {
-    "use strict";
-    $(".map").hide();
-    $(".map-error").show();
+function mapError(){
+    alert("Google maps has not been loaded!");
 };

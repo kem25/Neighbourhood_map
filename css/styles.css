@@ -118,10 +118,11 @@ li:hover {
   height: 100%;
   background-color: #CCC;
   z-index: 0;
+  text-align: center;
   
 }
 
-.map-error {
+/*.map-error {
   display:inline-block;
   width:80%;
   height:100px;
@@ -130,7 +131,7 @@ li:hover {
   right: 0;
   background: #f7f7f7;
   color:#254441;
-}
+}*/
 
 .filter {
   background: #f7f7f7;
