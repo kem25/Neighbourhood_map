@@ -233,4 +233,4 @@ function mapInit() {
 }
 function mapError(){
     alert("Google maps has not been loaded!");
-};
+}
