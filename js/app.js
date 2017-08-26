@@ -188,20 +188,20 @@ function mapInit() {
                     item.name = response.venue.name;
                     item.shortUrl = response.venue.shortUrl;
                     item.photoUrl = response.venue.bestPhoto.prefix + "height200" +
-                         response.venue.bestPhoto.suffix;
+                        response.venue.bestPhoto.suffix;
                 }).fail(function () {
                     item.name = "this Item has not been loaded";
                     item.photoUrl = "img/error.jpg";
                     item.shortUrl = "file not found";
-                // $("#url").hide();
+                    // $("#url").hide();
                 });
 
             });
         });
 
 
-    // call function upon clicking the item
-    this.itemClick = function (item) {
+        // call function upon clicking the item
+        this.itemClick = function (item) {
             var markerId = item.markerId;
             google.maps.event.trigger(item.marker, "click");
         };
@@ -229,8 +229,8 @@ function mapInit() {
         }, this);
     }
 
-     // Apply bindings to the view model
-     ko.applyBindings(new ViewModel());
+    // Apply bindings to the view model
+    ko.applyBindings(new ViewModel());
 }
 var mapError = function () {
     "use strict";

@@ -3,7 +3,7 @@ var initialSpaces = [
           {
           	"title": "Mika's Greek",
            	"location": {"lat": 33.3495856 , "lng": -111.949818},
-           	"fs_id": "515f0b677ab473662460166" 
+           	"fs_id": "515f0b677ab473662460166d" 
           },
 
           {
