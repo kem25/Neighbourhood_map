@@ -37,10 +37,11 @@
       </div>
     </div>
     <div id="map" class="map"></div>
-    <div id="map-error" class="map-error"></div>
+    <div id="map-error" class="map-error" data-bind="text: $root.errorMsg"></div>
   </div>
   <script src="js/lib/knockout-3.4.0.js"></script>
   <script src="js/lib/jquery.min.js"></script>
+  <script src="js/data.js"></script>
   <script src="js/app.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKV7Nh4wLfoA6UmaKtD4ghppnaYioE2VE&v3&callback=mapInit" onerror="mapError()"></script>
 
