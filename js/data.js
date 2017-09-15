@@ -1,4 +1,3 @@
-function model(){
 //List of Restaurants defined to appear on the page
 var initialSpaces = [
           {
@@ -37,4 +36,4 @@ var initialSpaces = [
           	"fs_id": "53c84bcd498e35e3e45faab5"
      	  }
         ];
-      };
+      
